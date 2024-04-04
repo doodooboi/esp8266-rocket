@@ -3,6 +3,8 @@
 #include <ESP8266WebServer.h>
 #include <Wire.h>
 
+#include "html.h"
+
 #define PINS_LED1 D4
 #define PINS_LED2 D3
 
@@ -22,7 +24,8 @@ void handle_NotFound(){
 }
 
 void handleRoot() {
-	server.send(200, "text/plain", "Connected");
+	String page = MAIN_page;
+	server.send(200, "text/html", page);
 }
 
 void setup() {
